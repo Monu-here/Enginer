@@ -1,6 +1,6 @@
 @extends('Back.layout.app')
 @section('toolbar')
-    / <a href="{{ route('admin.project.index') }}" style="text-decoration: none; color: black"> Project </a>  /Add
+    / <a href="{{ route('admin.project.index') }}" style="text-decoration: none; color: black"> Project </a>  /Edit
 
 @endsection
 @section('css')

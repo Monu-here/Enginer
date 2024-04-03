@@ -18,7 +18,7 @@
         </li>
         <li>
             <a href="{{route('admin.slider.index')}}">
-                <i class='bx bx-home'></i>
+                <i class="fa-solid fa-chart-simple"></i>
                 <span class="link_name">Slider</span>
             </a>
             <ul class="sub-menu blank">
@@ -29,7 +29,7 @@
 
         <li>
             <a href="{{route('admin.about.index')}}">
-                <i class='bx bxs-credit-card'></i>
+                <i class="fa-solid fa-user"></i>
                 <span class="link_name">About Us</span>
             </a>
             <ul class="sub-menu blank">
@@ -38,7 +38,7 @@
         </li>
         <li>
             <a href="{{route('admin.service.index')}}">
-                <i class='bx bx-bar-chart'></i>
+                <i class="fa-solid fa-server"></i>
                 <span class="link_name">Service</span>
             </a>
             <ul class="sub-menu blank">
@@ -47,7 +47,7 @@
         </li>
         <li>
             <a href="{{route('admin.project.index')}}">
-                <i class='bx bx-bar-chart'></i>
+                <i class="fa-solid fa-list-check"></i>
                 <span class="link_name">Project</span>
             </a>
             <ul class="sub-menu blank">
@@ -72,11 +72,13 @@
                             alt="profileImg">
                     </div>
                 </a>
+                @php
+                    $user = Auth::user();
+                @endphp
                 <div class="name-job">
                     <a href="{{ route('adminLogin.logout') }}">
-                        <div class="profile_name">John Doe</div>
-                        <div class="job">Crypto Expert</div>
-                    </a>
+                        <div class="profile_name">{{$user->name}}</div>
+                     </a>
                 </div>
                 <a href="{{ route('adminLogin.logout') }}">
                     <i class='bx bx-log-out'></i>
