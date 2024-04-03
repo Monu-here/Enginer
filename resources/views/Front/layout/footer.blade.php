@@ -1,8 +1,19 @@
+@php
+    $setting = getsetting();
+@endphp
 <section class="info_section ">
     <div class="info_container layout_padding2">
         <div class="container">
-            <div class="info_logo">
-                <a class="navbar-brand" href="index.html"> Tro<span>Weld</span> </a>
+            <div class="info_logo text-start d-block">
+
+                @php
+                    $textLength = strlen($setting->websitename);
+                    $splitPoint = ceil($textLength / 2);
+                    $firstHalf = substr($setting->websitename, 0, $splitPoint);
+                    $secondHalf = substr($setting->websitename, $splitPoint);
+                @endphp
+                <a class="navbar-brand" href="{{route('front.index')}}"> {{$firstHalf}}<span>{{$secondHalf}}</span> </a>
+                
             </div>
             <div class="info_main">
                 <div class="row">
@@ -32,41 +43,14 @@
                     </div>
                     <div class="col-md-3 ">
                         <h5>
-                            Welding
+                            About Us
                         </h5>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur
-                            adipiscinaliquaLoreadipiscing
+                            {{$setting->websitetext}}
                         </p>
                     </div>
-                    <div class="col-md-3 mx-auto  ">
-                        <h5>
-                            social media
-                        </h5>
-                        <div class="social_box">
-                            <a href="#">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>
-                            Our welding center
-                        </h5>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur
-                            adipiscinaliquaLoreadipiscing
-                        </p>
-                    </div>
+
+
                 </div>
             </div>
             <div class="info_bottom">
@@ -78,7 +62,7 @@
                                     <a href="#" class="link-box">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                                         <span>
-                                            Location
+                                           {{$setting->location}}
                                         </span>
                                     </a>
                                 </div>
@@ -86,7 +70,8 @@
                                     <a href="#" class="link-box">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
                                         <span>
-                                            Call +01 1234567890
+                                            Call {{$setting->phone}}
+
                                         </span>
                                     </a>
                                 </div>
@@ -94,23 +79,14 @@
                                     <a href="#" class="link-box">
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                         <span>
-                                            demo@gmail.com
+                                            {{$setting->email}}
                                         </span>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="info_form ">
-                            <form action="">
-                                <input type="email" placeholder="Enter Your Email" />
-                                <button>
-                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -124,9 +100,9 @@
     <div class="container">
         <p>
             &copy;
-        <span id="displayYear"></span>
-        All Rights Reserved By
-        <a href="">Monu Kumar</a>
+            <span id="displayYear"></span>
+            All Rights Reserved By
+            <a href="">Monu Kumar</a>
         </p>
     </div>
 </footer>

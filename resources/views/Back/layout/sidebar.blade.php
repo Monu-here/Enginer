@@ -1,6 +1,9 @@
+@php
+    $setting = getsetting();
+@endphp
 <div class="sidebar close">
     <div class="logo-details">
-        <i class='bx bxl-bitcoin'></i>
+        <i class='bx bx-home'></i>
         <span class="logo_name">Menu</span>
     </div>
     <ul class="nav-links">
@@ -24,7 +27,6 @@
         </li>
 
 
-
         <li>
             <a href="{{route('admin.about.index')}}">
                 <i class='bx bxs-credit-card'></i>
@@ -44,21 +46,22 @@
             </ul>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-compass'></i>
-                <span class="link_name">Explore</span>
+            <a href="{{route('admin.project.index')}}">
+                <i class='bx bx-bar-chart'></i>
+                <span class="link_name">Project</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Explore</a></li>
+                <li><a class="link_name" href="{{route('admin.project.index')}}">Project</a></li>
             </ul>
         </li>
+        
         <li>
-            <a href="#">
+            <a href="{{route('admin.setting.add')}}">
                 <i class='bx bx-cog'></i>
                 <span class="link_name">Setting</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Setting</a></li>
+                <li><a class="link_name" href="{{route('admin.setting.add')}}">Setting</a></li>
             </ul>
         </li>
         <li>

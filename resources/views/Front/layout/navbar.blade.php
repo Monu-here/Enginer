@@ -1,3 +1,4 @@
+
 <div class="header_bottom">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -10,33 +11,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav  ">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{route('front.index')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="service.html">Services</a>
+              <a class="nav-link" href="#serve">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html"> About</a>
+              <a class="nav-link" href="#about"> About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="portfolio.html">Portfolio</a>
+              <a class="nav-link" href="#project">Portfolio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
+              <a class="nav-link" href="#contact">Contact Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span>
-                  Login
-                </span>
-              </a>
-            </li>
-            <form class="form-inline">
-              <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
+             
+            
           </ul>
         </div>
       </nav>

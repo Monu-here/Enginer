@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Front\HomeController as FrontHomeController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('front.')->group(function () {
     Route::get('', [FrontHomeController::class, 'index'])->name('index');
+    Route::get('service/{service}',[FrontHomeController::class,'service'])->name('service');
 });
 Route::prefix('adminLogin')->name('adminLogin.')->group(function () {
     Route::match(['GET', 'POST'], '', [LoginController::class, 'login'])->name('login');
@@ -41,8 +44,17 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'CheckAdmin'])->grou
         Route::match(['GET', 'POST'], 'add', [AboutController::class, 'add'])->name('add');
         Route::match(['GET', 'POST'], 'edit/{about}', [AboutController::class, 'edit'])->name('edit');
         Route::get('del/{about}', [AboutController::class, 'del'])->name('del');
-        // Route::get('show/{aboutId}', [AboutController::class, 'show'])->name('show');
-    });
+     });
+    Route::prefix('project')->name('project.')->group(function () {
+        Route::get('', [ProjectController::class, 'index'])->name('index');
+        Route::match(['GET', 'POST'], 'add', [ProjectController::class, 'add'])->name('add');
+        Route::match(['GET', 'POST'], 'edit/{project}', [ProjectController::class, 'edit'])->name('edit');
+        Route::get('del/{project}', [ProjectController::class, 'del'])->name('del');
+     });
+    Route::prefix('setting')->name('setting.')->group(function () {
+        Route::get('', [SettingController::class, 'index'])->name('index');
+        Route::match(['GET', 'POST'], 'add', [SettingController::class, 'add'])->name('add');
+      });
     Route::prefix('service')->name('service.')->group(function () {
         Route::get('', [ServiceController::class, 'index'])->name('index');
         Route::match(['GET', 'POST'], 'add', [ServiceController::class, 'add'])->name('add');

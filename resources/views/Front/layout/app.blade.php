@@ -12,8 +12,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Troweld</title>
-
+    @php
+        $setting = getSetting();
+    @endphp
+    <title>{{ $setting->websitename }}</title>
     <!-- bootstrap core css -->
     {{-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> --}}
 
@@ -34,6 +36,11 @@
     <!-- responsive style -->
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+    <style>
+        *{
+            scroll-behavior: smooth;
+        }
+    </style>
     @yield('css')
 </head>
 

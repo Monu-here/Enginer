@@ -20,7 +20,7 @@ class ChcekAdmin
         if ($user->is_admin) {
             return $next($request);
         } else {
-            return redirect()->route('');
+            return redirect()->route('front.index');
         }
     }
 }

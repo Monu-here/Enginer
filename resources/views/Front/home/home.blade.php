@@ -1,6 +1,5 @@
 @extends('Front.layout.app')
 @section('content')
-
     <div class="hero_area">
         <section class="slider_section "
             style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png'); background-size: cover">
@@ -47,7 +46,7 @@
             </div>
         </section>
     </div>
-    <section class="about_section layout_padding">
+    <section class="about_section layout_padding" id="about">
         <div class="container  ">
             <div class="row">
                 @foreach ($abouts as $about)
@@ -79,98 +78,77 @@
             </div>
         </div>
     </section>
-    <section class="portfolio_section ">
+    <section class="portfolio_section" id="project">
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Our Work Portfolio
+                    Our Work
                 </h2>
             </div>
-            <div class="carousel-wrap ">
+            {{-- <div class="carousel-wrap ">
                 <div class="filter_box">
                     <nav class="owl-filter-bar">
                         <a href="#" class="item active" data-owl-filter="*">All</a>
-                        <a href="#" class="item" data-owl-filter=".decorative">DECORATIVE</a>
-                        <a href="#" class="item" data-owl-filter=".facade">FACADES </a>
-                        <a href="#" class="item" data-owl-filter=".perforated">PERFORATED
-                        </a>
-                        <a href="#" class="item" data-owl-filter=".railing">RAILINGS </a>
+                        @foreach ($projects as $project)
+                            <a href="#" class="item"
+                                data-owl-filter=".{{ $project->category_id }}">{{ $project->category_id }}</a>
+                        @endforeach
+
                     </nav>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="owl-carousel portfolio_carousel">
-            <div class="item decorative">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="images/p1.jpg" alt="" />
-                        <div class="btn_overlay">
-                            <a href="" class="">
-                                See More
-                            </a>
+            @foreach ($projects as $project)
+                <div class="item {{ $project->category_id }}">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset($project->image) }}" alt="" />
+                            <div class="btn_overlay">
+                                <p>
+                                    {{ $project->name }}
+                                    <br>
+                                    {{ $project->desc }}
+                                </p>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="item facade">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="images/p2.jpg" alt="" />
-                        <div class="btn_overlay">
-                            <a href="" class="">
-                                See More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item perforated decorative">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="images/p3.jpg" alt="" />
-                        <div class="btn_overlay">
-                            <a href="" class="">
-                                See More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item railing">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="images/p1.jpg" alt="" />
-                        <div class="btn_overlay">
-                            <a href="" class="">
-                                See More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+        </div>
+
+
         </div>
     </section>
-    <section class="service_section layout_padding">
+    <section class="service_section layout_padding" id="serve">
         <div class="container ">
             <div class="heading_container heading_center">
                 <h2>Our <span>Services</span></h2>
             </div>
             <div class="row">
                 @foreach ($services as $service)
-                    <div class="col-sm-6 col-md-4">
-                        <div class="box ">
-                            <div class="img-box">
-                                <img src="{{ asset($service->image) }}" alt="" />
+                    <div class="col-sm-6 col-md-4 text-black ">
+                        <a href="{{ route('front.service', ['service' => $service->id]) }}"
+                            class="text-decoration-none text-black">
+
+
+                            {{-- <a href="{{ route('front.service', ['name' => str_replace(" ", "-", $service->text1)]) }}" class="text-decoration-none text-black"> --}}
+
+                            <div class="box ">
+                                <div class="img-box">
+                                    <img src="{{ asset($service->image) }}" alt="" />
+                                </div>
+                                <div class="detail-box">
+                                    <h5>
+                                        {{ $service->text1 }}
+                                    </h5>
+                                    <p>
+                                        {{ $service->text2 }}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="detail-box">
-                                <h5>
-                                    {{ $service->text1 }}
-                                </h5>
-                                <p>
-                                    {{ $service->text2 }}
-                                </p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -181,7 +159,7 @@
             </div>
         </div>
     </section>
-    <section class="contact_section">
+    <section class="contact_section" id="contact">
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>Get In <span>Touch</span></h2>
@@ -198,8 +176,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-lg-6">
-                                    <input type="number" class="form-control" name="phone"
-                                        placeholder="Phone Number" />
+                                    <input type="number" class="form-control" name="phone" placeholder="Phone Number" />
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <select name="prov" id="" class="form-control wide">
@@ -247,103 +224,7 @@
             </div>
         </div>
     </section>
-    <section class="client_section layout_padding">
-        <div class="container">
-          <div class="heading_container heading_center">
-            <h2>
-              Testimonial
-            </h2>
-          </div>
-          <div class="row">
-            <div class="col-md-9 mx-auto">
-              <div id="customCarousel2" class="carousel slide" data-ride="carousel">
-                <div class="row">
-                  <div class="col-md-11">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <div class="box">
-                          <div class="client_id">
-                            <div class="img-box">
-                              <img src="images/client.jpg" alt="" />
-                            </div>
-                            <h5>
-                              Alex Jonson
-                            </h5>
-                          </div>
-                          <div class="detail-box">
-                            <p>
-                              ipsum dolor sit amet, consectetur adipiscing elit,
-                              sed do eiusmod tempor incididunt ut labore et dolore
-                              magna aliqua. Ut enim ad minim veniam, quis nostrud
-                              exercitation ullamco laboris nisi ut aliquip ex ea
-                              commodo consequat. Duis aute irure dolor in
-                              reprehenderit in voluptate velit
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="carousel-item">
-                        <div class="box">
-                          <div class="client_id">
-                            <div class="img-box">
-                              <img src="images/client.jpg" alt="" />
-                            </div>
-                            <h5>
-                              Alex Jonson
-                            </h5>
-                          </div>
-                          <div class="detail-box">
-                            <p>
-                              ipsum dolor sit amet, consectetur adipiscing elit,
-                              sed do eiusmod tempor incididunt ut labore et dolore
-                              magna aliqua. Ut enim ad minim veniam, quis nostrud
-                              exercitation ullamco laboris nisi ut aliquip ex ea
-                              commodo consequat. Duis aute irure dolor in
-                              reprehenderit in voluptate velit
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="carousel-item">
-                        <div class="box">
-                          <div class="client_id">
-                            <div class="img-box">
-                              <img src="images/client.jpg" alt="" />
-                            </div>
-                            <h5>
-                              Alex Jonson
-                            </h5>
-                          </div>
-                          <div class="detail-box">
-                            <p>
-                              ipsum dolor sit amet, consectetur adipiscing elit,
-                              sed do eiusmod tempor incididunt ut labore et dolore
-                              magna aliqua. Ut enim ad minim veniam, quis nostrud
-                              exercitation ullamco laboris nisi ut aliquip ex ea
-                              commodo consequat. Duis aute irure dolor in
-                              reprehenderit in voluptate velit
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-1">
-                    <ol class="carousel-indicators">
-                      <li data-target="#customCarousel2" data-slide-to="0" class="active"></li>
-                      <li data-target="#customCarousel2" data-slide-to="1"></li>
-                      <li data-target="#customCarousel2" data-slide-to="2"></li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-@endsection
-@section('js')
-    <script>
+    < @endsection @section('js') <script>
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             document.getElementById("spinner").style.display = "block"; // Show the spinner when form is submitted
             document.getElementById("new").style.display = "none"; // Show the spinner when form is submitted

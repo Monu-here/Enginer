@@ -20,13 +20,13 @@ class LoginController extends Controller
             }
         } else {
 
-            return view('back.adminLogin.index');
+            return view('Back.adminLogin.index');
         }
     }
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('adminLogin.login');
+        return redirect()->route('front.index');
     }
 
 }
