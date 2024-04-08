@@ -6,14 +6,10 @@
         <div class="container">
             <div class="info_logo text-start d-block">
 
-                @php
-                    $textLength = strlen($setting->websitename);
-                    $splitPoint = ceil($textLength / 2);
-                    $firstHalf = substr($setting->websitename, 0, $splitPoint);
-                    $secondHalf = substr($setting->websitename, $splitPoint);
-                @endphp
-                <a class="navbar-brand" href="{{route('front.index')}}"> {{$firstHalf}}<span>{{$secondHalf}}</span> </a>
-                
+
+                <a class="navbar-brand" href="{{ route('front.index') }}"> {{ $setting->websitename ?? 'Website' }}</span>
+                </a>
+
             </div>
             <div class="info_main">
                 <div class="row">
@@ -46,7 +42,7 @@
                             About Us
                         </h5>
                         <p>
-                            {{$setting->websitetext}}
+                            {{ $setting->websitetext ?? 'Website' }}
                         </p>
                     </div>
 
@@ -62,7 +58,7 @@
                                     <a href="#" class="link-box">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                                         <span>
-                                           {{$setting->location}}
+                                            {{ $setting->location ?? 'location' }}
                                         </span>
                                     </a>
                                 </div>
@@ -70,7 +66,7 @@
                                     <a href="#" class="link-box">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
                                         <span>
-                                            Call {{$setting->phone}}
+                                            Call {{ $setting->phone ?? 'phone' }}
 
                                         </span>
                                     </a>
@@ -79,7 +75,7 @@
                                     <a href="#" class="link-box">
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                         <span>
-                                            {{$setting->email}}
+                                            {{ $setting->email ?? 'email' }}
                                         </span>
                                     </a>
                                 </div>

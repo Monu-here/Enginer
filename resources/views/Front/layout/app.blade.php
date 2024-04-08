@@ -15,7 +15,7 @@
     @php
         $setting = getSetting();
     @endphp
-    <title>{{ $setting->websitename }}</title>
+    <title>{{ $setting->websitename ?? "Website" }}</title>
     <!-- bootstrap core css -->
     {{-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> --}}
 
