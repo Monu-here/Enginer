@@ -80,9 +80,6 @@ a:focus {
   background-color: #003471;
 }
 
-.header_section {
-  border-top: 15px solid #da7426;
-}
 .header_section .header_top {
   padding: 15px 0;
   background-color: #003471;
@@ -446,8 +443,9 @@ a:focus {
   opacity: 0;
   transition: all 0.3s;
 }
-.portfolio_section .box .img-box .btn_overlay p {
+.portfolio_section .box .img-box .btn_overlay a {
   padding: 10px 45px;
+  border: 1px solid #da7426;
   color: #da7426;
 }
 .portfolio_section .box .img-box .btn_overlay a:hover {
